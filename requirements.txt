@@ -1,0 +1,6 @@
+matplotlib
+openai
+pandas
+scikit-learn
+yfinance
+pytest
