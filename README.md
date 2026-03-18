@@ -6,24 +6,27 @@ It performs:
 1. Market data download from Yahoo Finance.
 2. Data cleaning and feature engineering.
 3. Baseline regression modeling and evaluation.
-4. Optional AI-generated plain-language explanation of recent predictions.
+4. **Interactive web dashboard** for visualizing stock trends and predictions dynamically.
+5. Optional AI-generated plain-language explanation of recent predictions.
 
 ## Why this project is portfolio-ready
 
 1. Modular code with single-responsibility scripts.
-2. Environment-based secret handling, no hardcoded keys.
-3. Automated tests and GitHub Actions CI.
-4. Reproducible outputs and run logging.
-5. Clear setup and execution documentation.
+2. Full-stack Python implementation (from data engineering to FastAPI web serving).
+3. Environment-based secret handling, no hardcoded keys.
+4. Automated tests and GitHub Actions CI.
+5. Reproducible outputs and run logging.
+6. Clear setup and execution documentation.
 
 ## Repository structure
 
-- src/download_data.py: Downloads historical stock data.
-- src/clean_features.py: Cleans data and creates modeling features.
-- src/ml_model.py: Trains baseline model, writes predictions, saves plot.
-- src/daily_update.py: Orchestrates the full end-to-end pipeline.
-- tests/: Unit tests for feature engineering, model pipeline, and AI fallback behavior.
-- .github/workflows/ci.yml: CI pipeline for automated testing.
+- `src/download_data.py`: Downloads historical stock data.
+- `src/clean_features.py`: Cleans data and creates modeling features.
+- `src/ml_model.py`: Trains baseline model and writes predictions.
+- `src/daily_update.py`: Orchestrates the full end-to-end pipeline.
+- `ui/`: Contains the FastAPI backend and vanilla JS/CSS frontend for the interactive web dashboard.
+- `tests/`: Unit tests for feature engineering, model pipeline, and AI fallback behavior.
+- `.github/workflows/ci.yml`: CI pipeline for automated testing.
 
 ## Setup
 
@@ -34,13 +37,13 @@ It performs:
 pip install -r requirements.txt
 ```
 
-3. Optional, for AI explanation: create a .env file or set environment variable.
+3. Optional, for AI explanation: create a `.env` file or set environment variable.
 
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-## Run
+## Run the Pipeline
 
 Run full pipeline:
 
@@ -62,6 +65,15 @@ python src/clean_features.py --ticker AAPL
 python src/ml_model.py --ticker AAPL
 ```
 
+## Run the Web Dashboard
+
+To view the predictions interactively in your browser:
+
+```powershell
+uvicorn ui.app:app --port 8000
+```
+Then navigate to **http://localhost:8000** in your web browser.
+
 ## Test
 
 ```powershell
@@ -77,17 +89,18 @@ powershell -ExecutionPolicy Bypass -File scripts/clean.ps1
 ## CI
 
 GitHub Actions runs tests on every push and pull request via:
-- .github/workflows/ci.yml
+- `.github/workflows/ci.yml`
 
 ## Outputs
 
-Generated files under data/:
-- <TICKER>_stock_data.csv
-- <TICKER>_cleaned.csv
-- <TICKER>_predictions.csv
-- <TICKER>_plot.png
-- <TICKER>_explanation_<DATE>.txt (if AI enabled)
-- daily_run_log.txt
+Generated files under `data/`:
+- `<TICKER>_stock_data.csv`
+- `<TICKER>_cleaned.csv`
+- `<TICKER>_predictions.csv`
+- `<TICKER>_explanation_<DATE>.txt` (if AI enabled)
+- `daily_run_log.txt`
+
+*(Note: Static plot images were removed in favor of the dynamic Web UI).*
 
 ## Limitations and future work
 
