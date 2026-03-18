@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Investment Intelligence Dashboard</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <div class="logo"></div>
+                <h2>AI Invest</h2>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Select Ticker</h3>
+                <ul id="ticker-list" class="ticker-list">
+                    <!-- Dynamic Tickers Go Here -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="glass-panel main-header">
+                <div>
+                    <h1 id="dashboard-title">Dashboard</h1>
+                    <p class="subtitle">AI-Powered Stock Predictions</p>
+                </div>
+                <div class="status-indicator">
+                    <span class="pulse"></span> Live
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Chart Panel -->
+                <div class="panel glass-panel chart-panel">
+                    <div class="panel-header">
+                        <h2>Prediction Trend</h2>
+                        <div class="chart-controls">
+                            <span class="badge" id="current-price">Connecting...</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="predictionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Metrics Panel (Optional placeholders for stats) -->
+                <div class="side-panels">
+                    <div class="panel glass-panel stat-card">
+                        <h3>Model Confidence</h3>
+                        <div class="stat-value">High</div>
+                    </div>
+                    <div class="panel glass-panel stat-card">
+                        <h3>Last Updated</h3>
+                        <div class="stat-value" id="last-updated">Today</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
